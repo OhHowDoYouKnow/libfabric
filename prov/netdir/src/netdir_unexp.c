@@ -50,12 +50,13 @@
 
 #define PREPOSTLEN (sizeof(nd_unexpected_buf) + gl_data.inline_thr)
 
+OFI_ND_NB_BUF(nd_unexpected_ctx);
+OFI_ND_NB_BUF(nd_unexpected_entry);
+
 static ND_BUF_CHUNK(nd_unexpected_entry) *ofi_nd_unexp_alloc_chunk(
 	ND_BUF_FOOTER(nd_unexpected_entry) *footer, size_t* count);
 static void ofi_nd_unexp_free_chunk(ND_BUF_CHUNK(nd_unexpected_entry) *chunk);
 
-OFI_ND_NB_BUF(nd_unexpected_ctx);
-OFI_ND_NB_BUF(nd_unexpected_entry);
 OFI_ND_NB_BUF_IMP(nd_unexpected_ctx);
 OFI_ND_NB_BUF_IMP_ALLOC(nd_unexpected_entry,
 			ofi_nd_unexp_alloc_chunk,
@@ -159,8 +160,8 @@ HRESULT ofi_nd_unexp_fini(struct nd_ep *ep)
 	return S_OK;
 }
 
-static ND_BUF_CHUNK(nd_unexpected_entry)
-*ofi_nd_unexp_alloc_chunk(ND_BUF_FOOTER(nd_unexpected_entry) *footer, size_t* count)
+static ND_BUF_CHUNK(nd_unexpected_entry) *ofi_nd_unexp_alloc_chunk(
+	ND_BUF_FOOTER(nd_unexpected_entry) *footer, size_t* count)
 {
 	OFI_UNUSED(footer);
 
