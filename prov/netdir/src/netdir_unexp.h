@@ -48,8 +48,8 @@ extern "C" {
 typedef struct nd_unexpected_buf {
 	struct nd_msgheader	header;
 	union received {
-		struct nd_msg_location	locations[];
-		char			data[];
+		struct nd_msg_location	*locations;
+		char			*data;
 	} received_buf;
 } nd_unexpected_buf;
 
