@@ -279,7 +279,9 @@ do						\
 #define ntohll _byteswap_uint64
 #define strncasecmp _strnicmp
 
+#ifndef __MINGW32__
 typedef int pid_t;
+#endif
 #define getpid (int)GetCurrentProcessId
 
 int fd_set_nonblock(int fd);
@@ -925,11 +927,16 @@ static inline int ofi_is_loopback_addr(struct sockaddr *addr) {
 }
 
 size_t ofi_ifaddr_get_speed(struct ifaddrs *ifa);
-
+#ifdef __MINGW32__
+#define file2unix_time	10000000ll
+#define win2unix_epoch	116444736000000000ll
+#else
 #define file2unix_time	10000000i64
 #define win2unix_epoch	116444736000000000i64
+#endif
 #define CLOCK_MONOTONIC 1
 
+#ifndef __MINGW32__
 /* Own implementation of clock_gettime*/
 static inline
 int clock_gettime(int which_clock, struct timespec *spec)
@@ -944,7 +951,7 @@ int clock_gettime(int which_clock, struct timespec *spec)
 
 	return 0;
 }
-
+#endif
 /* complex operations implementation */
 
 #define OFI_DEF_COMPLEX(type)					\
