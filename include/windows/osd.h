@@ -30,7 +30,7 @@
 #include <errno.h>
 #include <complex.h>
 #include "pthread.h"
-
+#include "sys/socket.h"
 #include <sys/uio.h>
 #include <time.h>
 
