@@ -47,26 +47,12 @@
 #include "netdir_log.h"
 #include "netdir_iface.h"
 #include "netdir_queue.h"
-
+#include "netdir_types.h"
 #include "rdma/fi_eq.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif /* __cplusplus */
-
-typedef enum ofi_nd_cq_state {
-	NORMAL_STATE		= 0,
-	LARGE_MSG_RECV_REQ	= 1,
-	LARGE_MSG_WAIT_ACK	= 2,
-	MAX_STATE		= 3
-} ofi_nd_cq_state;
-
-typedef enum ofi_nd_cq_event {
-	NORMAL_EVENT		= 0,
-	LARGE_MSG_REQ		= 1,
-	LARGE_MSG_ACK		= 2,
-	MAX_EVENT		= 3
-} ofi_nd_cq_event;
 
 typedef struct nd_eq_event {
 	OVERLAPPED		ov;

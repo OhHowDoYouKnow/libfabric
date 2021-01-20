@@ -46,7 +46,7 @@
 #include "rdma/fi_eq.h"
 #include "rdma/fi_domain.h"
 #include "rdma/fi_endpoint.h"
-
+#include "netdir_types.h"
 #include "netdir_buf.h"
 #include "netdir_queue.h"
 #include "netdir_ov.h"
