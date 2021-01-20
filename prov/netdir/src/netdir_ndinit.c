@@ -36,7 +36,11 @@
 #include <guiddef.h>
 
 #include <ws2spi.h>
+#ifdef __MINGW32__
+#include <assert.h>
+#else
 #include <cassert>
+#endif
 #include "ndspi.h"
 
 #include "netdir.h"
