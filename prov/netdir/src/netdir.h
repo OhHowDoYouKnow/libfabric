@@ -43,11 +43,11 @@
 
 #include <ndspi.h>
 #include "ofi_osd.h"
+#include "rdma/fi_eq.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif /* __cplusplus */
-
 
 #define ND_MSG_IOV_LIMIT		(256)
 #define ND_MSG_INTERNAL_IOV_LIMIT	(512)
