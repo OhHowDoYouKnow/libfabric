@@ -1,6 +1,6 @@
 
 #pragma once
-
+#include <errno.h>
 
 
 struct dirent {
