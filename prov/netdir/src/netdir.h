@@ -44,6 +44,7 @@
 #include <ndspi.h>
 #include "ofi_osd.h"
 #include "rdma/fi_eq.h"
+#include "rdma/fi_domain.h"
 
 #ifdef __cplusplus
 extern "C" {
