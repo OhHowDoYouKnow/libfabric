@@ -29,9 +29,9 @@
 /* Unix specific macro */
 #define S_IRUSR S_IREAD
 #define S_IWUSR S_IWRITE
-
+#ifndef __MINGW32__
 typedef uint32_t mode_t;
-
+#endif
 /* stubs for Linux only functions */
 static inline void *mremap(void *old_address, size_t old_size, size_t new_size, int flags)
 {
