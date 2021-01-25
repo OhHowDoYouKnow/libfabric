@@ -187,7 +187,11 @@ static inline int ofi_nd_hresult_2_fierror(HRESULT hr)
 #ifdef ENABLE_DEBUG  
 # define NODEFAULT	assert(0)  
 #else  
-# define NODEFAULT	__assume(0)  
+# ifdef __MINGW32__
+#  define NODEFAULT  __builtin_unreachable()
+# else
+#  define NODEFAULT	__assume(0)  
+# endif
 #endif  
 
 

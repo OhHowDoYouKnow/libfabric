@@ -46,6 +46,14 @@
 extern "C" {
 #endif /* __cplusplus */
 
+
+#ifdef __MINGW32__
+static inline unsigned char InterlockedCompareExchange128(__int64 *dest, __int64 xchg_high, __int64 xchg_low, __int64 *compare)
+{
+    return __sync_bool_compare_and_swap( (__int128 *)dest, *(__int128 *)compare, ((__int128)xchg_high << 64) | xchg_low );
+}
+#endif
+
 struct nd_queue_item {
 	struct nd_queue_item	*next;
 };

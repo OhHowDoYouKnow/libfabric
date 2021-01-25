@@ -34,6 +34,10 @@
 #include <sys/uio.h>
 #include <time.h>
 
+#ifdef __MINGW32__
+#include <pthread.h>
+#endif
+
 #include <rdma/fi_errno.h>
 #include <rdma/fabric.h>
 
