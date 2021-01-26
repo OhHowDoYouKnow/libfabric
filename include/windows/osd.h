@@ -940,10 +940,16 @@ size_t ofi_ifaddr_get_speed(struct ifaddrs *ifa);
 #endif
 #define CLOCK_MONOTONIC 1
 
-#ifndef __MINGW32__
+#ifdef __MINGW32__
+/* even mingw would provide a clock_gettime, it's tendious to carry the additional library around.
+   it's easier to fix the original approach for windows */
+inline
+int clock_gettime(int which_clock, struct timespec *spec)
+#else
 /* Own implementation of clock_gettime*/
 static inline
 int clock_gettime(int which_clock, struct timespec *spec)
+#endif
 {
 	__int64 wintime;
 
@@ -955,7 +961,7 @@ int clock_gettime(int which_clock, struct timespec *spec)
 
 	return 0;
 }
-#endif
+
 /* complex operations implementation */
 
 #define OFI_DEF_COMPLEX(type)					\
